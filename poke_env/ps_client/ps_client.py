@@ -373,8 +373,8 @@ class PSClient:
         :return: The websocket url.
         :rtype: str
         """
-        # return f"ws://{self.server_configuration.server_url}/showdown/websocket"   # online
-        return f"wss://{self.server_configuration.server_url}/showdown/websocket"   # online
+        # wss:// only needed for real pokemonshowdown.com — self-hosted servers use ws://
+        return f"ws://{self.server_configuration.server_url}/showdown/websocket"   # online
 
     @property
     def websocket_url_local(self) -> str:
