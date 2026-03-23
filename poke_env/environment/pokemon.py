@@ -903,11 +903,12 @@ class Pokemon:
         """
         # Try Bayesian predictions first if requested or if we have context
         if guess_type == 'bayesian' or (observed_moves and battle):
-            bayesian_result = self._get_bayesian_stats(observed_moves, battle)
-            if bayesian_result:
-                return bayesian_result
-            else:
-                print('Bayesian stats failed')
+            try:
+                bayesian_result = self._get_bayesian_stats(observed_moves, battle)
+                if bayesian_result:
+                    return bayesian_result
+            except Exception:
+                pass  # Fall through to statistical method
         
         # Original implementation
         stat_types = ['hp', 'atk', 'def', 'spa', 'spd', 'spe']
