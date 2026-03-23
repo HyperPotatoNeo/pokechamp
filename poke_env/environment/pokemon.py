@@ -907,8 +907,11 @@ class Pokemon:
                 bayesian_result = self._get_bayesian_stats(observed_moves, battle)
                 if bayesian_result:
                     return bayesian_result
-            except Exception:
-                pass  # Fall through to statistical method
+            except Exception as e:
+                import logging
+                logging.getLogger(__name__).warning(
+                    "Bayesian stats failed (%s), using statistical fallback", e
+                )
         
         # Original implementation
         stat_types = ['hp', 'atk', 'def', 'spa', 'spd', 'spe']
