@@ -1022,9 +1022,8 @@ def state_translate(sim: LocalSim,
             if pokemon.type_2:
                 type_2 = pokemon.type_2.name
                 type = type + " and " + type_2.capitalize()
-        if pokemon.max_hp == 0:
-            pokemon._max_hp = 1
-        hp_fraction = round(pokemon.current_hp / pokemon.max_hp * 100)
+        max_hp = pokemon.max_hp if pokemon.max_hp != 0 else 1
+        hp_fraction = round(pokemon.current_hp / max_hp * 100)
 
         stats = pokemon.stats
         if stats['atk'] is None:
@@ -1634,9 +1633,8 @@ def state_translate2(sim: LocalSim,
             if pokemon.type_2:
                 type_2 = pokemon.type_2.name
                 type = type + " and " + type_2.capitalize()
-        if pokemon.max_hp == 0:
-            pokemon._max_hp = 1
-        hp_fraction = round(pokemon.current_hp / pokemon.max_hp * 100)
+        max_hp = pokemon.max_hp if pokemon.max_hp != 0 else 1
+        hp_fraction = round(pokemon.current_hp / max_hp * 100)
 
         stats = pokemon.stats
         if stats['atk'] is None:
@@ -2014,9 +2012,8 @@ def state_translate3(sim: LocalSim,
             if pokemon.type_2:
                 type_2 = pokemon.type_2.name
                 type = type + " and " + type_2.capitalize()
-        if pokemon.max_hp == 0:
-            pokemon._max_hp = 1
-        hp_fraction = round(pokemon.current_hp / pokemon.max_hp * 100)
+        max_hp = pokemon.max_hp if pokemon.max_hp != 0 else 1
+        hp_fraction = round(pokemon.current_hp / max_hp * 100)
 
         stats = pokemon.stats
         if stats['atk'] is None:

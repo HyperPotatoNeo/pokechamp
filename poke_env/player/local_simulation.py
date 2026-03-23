@@ -130,9 +130,10 @@ class LocalSim():
                  _dynamax_disable: bool,
                 _strategy: str='',
                 format: str='gen9randombattle',
-                prompt_translate: Callable=None
+                prompt_translate: Callable=None,
+                _copy_battle: bool=True
         ):
-        self.battle = deepcopy(battle)
+        self.battle = deepcopy(battle) if _copy_battle else battle
         self.move_effect = move_effect
         self.pokemon_move_dict = pokemon_move_dict
         self.ability_effect = ability_effect
