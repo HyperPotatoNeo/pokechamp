@@ -858,7 +858,7 @@ def state_translate(sim: LocalSim,
 
             elif opponent_move.category.name == "PHYSICAL":
                 opponent_atk = opponent_stats['atk'] * sim.boost_multiplier('atk', opponent_boosts['atk'])
-                active_def = active_stats['atk'] * sim.boost_multiplier('atk', active_boosts['atk'])
+                active_def = active_stats['def'] * sim.boost_multiplier('def', active_boosts['def'])
                 power = round(opponent_atk/active_def * opponent_move.base_power)
             else:
                 power = 0
@@ -978,12 +978,12 @@ def state_translate(sim: LocalSim,
 
         if move.category.name == "SPECIAL":
             active_spa = active_stats["spa"] * sim.boost_multiplier("spa", active_boosts["spa"])
-            opponent_spd = opponent_stats["spd"] * sim.boost_multiplier("spd", active_boosts["spd"])
+            opponent_spd = opponent_stats["spd"] * sim.boost_multiplier("spd", opponent_boosts["spd"])
             power = round(active_spa / opponent_spd * move.base_power)
             move_category = ""
         elif move.category.name == "PHYSICAL":
             active_atk = active_stats["atk"] * sim.boost_multiplier("atk", active_boosts["atk"])
-            opponent_def = opponent_stats["def"] * sim.boost_multiplier("def", active_boosts["def"])
+            opponent_def = opponent_stats["def"] * sim.boost_multiplier("def", opponent_boosts["def"])
             power = round(active_atk / opponent_def * move.base_power)
             move_category = ""
         else:
@@ -1584,12 +1584,12 @@ def state_translate2(sim: LocalSim,
 
         if move.category.name == "SPECIAL":
             active_spa = active_stats["spa"] * sim.boost_multiplier("spa", active_boosts["spa"])
-            opponent_spd = opponent_stats["spd"] * sim.boost_multiplier("spd", active_boosts["spd"])
+            opponent_spd = opponent_stats["spd"] * sim.boost_multiplier("spd", opponent_boosts["spd"])
             power = round(active_spa / opponent_spd * move.base_power)
             move_category = ""
         elif move.category.name == "PHYSICAL":
             active_atk = active_stats["atk"] * sim.boost_multiplier("atk", active_boosts["atk"])
-            opponent_def = opponent_stats["def"] * sim.boost_multiplier("def", active_boosts["def"])
+            opponent_def = opponent_stats["def"] * sim.boost_multiplier("def", opponent_boosts["def"])
             power = round(active_atk / opponent_def * move.base_power)
             move_category = ""
         else:
